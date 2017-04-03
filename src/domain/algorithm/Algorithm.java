@@ -1,7 +1,9 @@
 package domain.algorithm;//package domain.algorithm;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.TreeMap;
 
 /**
  * @version 1.0
@@ -83,5 +85,33 @@ public class Algorithm {
             if (set2.contains(item)) intersection.add(item);
         });
         return (float) intersection.size() / union.size();
+    }
+
+    public static void updateCentroid(Cluster cluster) {
+        cluster.getPeople().forEach((question, answers) -> {
+            //Send answers to each function
+        });
+    }
+
+    /**
+     * @param answers a set of answers with a numerical value
+     * @return the computed mean for all answer values
+     */
+    private static float getMean(HashMap<Integer, Integer> answers) {
+        final Integer[] summation = {0};
+        answers.forEach((person, answer) -> summation[0] += answer);
+        return summation[0] / answers.size();
+    }
+
+    /**
+     * @param answers a set of answers with a unique word as value
+     * @return the most common word in the given answer set
+     */
+    private static String getMode(HashMap<Integer, String> answers) {
+        final HashMap<String, Integer> repetitions = new HashMap<>(answers.size());
+        answers.forEach((person, answer) -> repetitions.compute(answer, (key, value) -> value == null ? 1 : ++value));
+        TreeMap<Integer, String> ordered = new TreeMap<>();
+        repetitions.forEach((answer, reps) -> ordered.put(reps, answer));
+        return ordered.get(ordered.lastKey());
     }
 }

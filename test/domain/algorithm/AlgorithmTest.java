@@ -31,16 +31,16 @@ class AlgorithmTest {
     }
 
     @Test
-    void itShouldCalculateTheJaccardDistanceBetweenTwoSets() {
+    void itShouldCalculateTheDistanceBetweenTwoSetsAsPerJaccardCoefficient() {
         assertEquals(Algorithm.getDistance(new HashSet<>(Arrays.asList("red", "green", "blue")), new HashSet<>(Arrays.asList("red", "green", "blue"))), 0);
         assertEquals(Algorithm.getDistance(new HashSet<>(Arrays.asList("red", "green")), new HashSet<>(Arrays.asList("blue", "black"))), 1);
         assertEquals(Algorithm.getDistance(new HashSet<>(Arrays.asList("red", "green", "blue")), new HashSet<>(Arrays.asList("green", "blue", "black"))), .5);
     }
 
     @Test
-    void itShouldCalculateTheLevenshteinDistanceBetweenTwoStringsOfWords() {
+    void itShouldCalculateTheDistanceBetweenTwoStringsOfWordsAsPerLevenshteinDistance() {
         assertEquals(Algorithm.getDistanceFree("test", "test"), 0);
-        assertEquals(Algorithm.getDistanceFree("kitten", "sitting"),2.0 / 6, .001);
-        assertEquals(Algorithm.getDistanceFree("rosettacode", "raisethysword"),6.0 / 11, .001);
+        assertEquals(Algorithm.getDistanceFree("kitten", "sitting"), 2.0 / 6, .001);
+        assertEquals(Algorithm.getDistanceFree("rosettacode", "raisethysword"), 6.0 / 11, .001);
     }
 }
