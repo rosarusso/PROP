@@ -1,6 +1,5 @@
-/**
- * Created by clara on 3/04/17.
- */
+package domain.profile;
+
 public class Admin extends Profile {
 
 
