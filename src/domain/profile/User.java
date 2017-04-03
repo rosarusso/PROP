@@ -1,5 +1,6 @@
+package domain.profile;
 /**
- * Created by clara on 3/04/17.
+ * @version 1.0
  */
 public class User extends Profile {
 
