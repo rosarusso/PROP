@@ -2,12 +2,11 @@ package domain.algorithm;
 
 import org.junit.jupiter.api.Test;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AlgorithmTest {
     @Test
@@ -41,7 +40,7 @@ class AlgorithmTest {
     @Test
     void itShouldCalculateTheLevenshteinDistanceBetweenTwoStringsOfWords() {
         assertEquals(Algorithm.getDistanceFree("test", "test"), 0);
-        assertEquals(new BigDecimal(Algorithm.getDistanceFree("kitten", "sitting")).setScale(3, BigDecimal.ROUND_HALF_EVEN), new BigDecimal(2.0 / 6).setScale(3, BigDecimal.ROUND_HALF_EVEN));
-        assertEquals(new BigDecimal(Algorithm.getDistanceFree("rosettacode", "raisethysword")).setScale(3, BigDecimal.ROUND_HALF_EVEN), new BigDecimal(6.0 / 11).setScale(3, BigDecimal.ROUND_HALF_EVEN));
+        assertEquals(Algorithm.getDistanceFree("kitten", "sitting"),2.0 / 6, .001);
+        assertEquals(Algorithm.getDistanceFree("rosettacode", "raisethysword"),6.0 / 11, .001);
     }
 }
