@@ -68,7 +68,7 @@ public class Algorithm {
      */
     private static int levenshteinDistance(String string1, String string2) {
         if (Math.min(string1.length(), string2.length()) == 0) return Math.max(string1.length(), string2.length());
-        int factor = string1.charAt(0) == string2.charAt(0) ? 0 : 1;
+        int factor = string1.toLowerCase().charAt(0) == string2.toLowerCase().charAt(0) ? 0 : 1;
         return Math.min(Math.min(levenshteinDistance(string1.substring(1), string2) + 1, levenshteinDistance(string1, string2.substring(1)) + 1), levenshteinDistance(string1.substring(1), string2.substring(1)) + factor);
     }
 
@@ -82,7 +82,7 @@ public class Algorithm {
         HashSet<String> intersection = new HashSet<>();
         union.addAll(set2);
         set1.forEach(item -> {
-            if (set2.contains(item)) intersection.add(item);
+            if (set2.contains(item)||set2.contains(item.toLowerCase())) intersection.add(item);
         });
         return (float) intersection.size() / union.size();
     }
@@ -109,7 +109,7 @@ public class Algorithm {
      */
     private static String getMode(HashMap<Integer, String> answers) {
         final HashMap<String, Integer> repetitions = new HashMap<>(answers.size());
-        answers.forEach((person, answer) -> repetitions.compute(answer, (key, value) -> value == null ? 1 : ++value));
+        answers.forEach((person, answer) -> repetitions.compute(answer.toLowerCase(), (key, value) -> value == null ? 1 : ++value));
         TreeMap<Integer, String> ordered = new TreeMap<>();
         repetitions.forEach((answer, reps) -> ordered.put(reps, answer));
         return ordered.get(ordered.lastKey());
