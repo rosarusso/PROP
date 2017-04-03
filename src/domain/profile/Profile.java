@@ -1,3 +1,4 @@
+package domain.profile;
 /**
  * @version 1.0
  */
